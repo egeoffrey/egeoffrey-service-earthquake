@@ -1,0 +1,6 @@
+package: myhouse-service-earthquake
+revision: 1
+version: development
+git: myhouse-project/myhouse-service-earthquake
+modules:
+  - service/earthquake
