@@ -1,5 +1,5 @@
 package: myhouse-service-earthquake
-revision: 1
+revision: 4
 version: development
 git: myhouse-project/myhouse-service-earthquake
 modules:

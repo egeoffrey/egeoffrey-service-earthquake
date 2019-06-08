@@ -17,10 +17,12 @@ import datetime
 import time
 import json
 
-from sdk.module.service import Service
+from sdk.python.module.service import Service
+from sdk.python.utils.datetimeutils import DateTimeUtils
 
-import sdk.utils.web
-import sdk.utils.datetimeutils
+import sdk.python.utils.web
+import sdk.python.utils.datetimeutils
+import sdk.python.utils.exceptions as exception
 
 class Earthquake(Service):
     # What to do when initializing
@@ -30,6 +32,8 @@ class Earthquake(Service):
         self.query = "format=text&limit="+str(self.limit)+"&orderby=time-asc"
         # helpers
         self.date = None
+        # require configuration before starting up
+        self.add_configuration_listener("house", True)
         
     # What to do when running
     def on_start(self):
@@ -54,17 +58,17 @@ class Earthquake(Service):
             else:
                 # retrieve the data
                 try:
-                    url = "http://"+domain+"/fdsnws/event/1/query?"+query+"&"+str(query)
-                    data = json.dumps(sdk.utils.web.get(url))
+                    url = "http://"+domain+"/fdsnws/event/1/query?"+"format=text&limit="+str(self.limit)+"&orderby=time-asc"+"&"+str(query)
+                    data = sdk.python.utils.web.get(url)
                 except Exception,e: 
                     self.log_error("unable to connect to "+url+": "+exception.get(e))
                     return
                 self.cache.add(cache_key, data)
             message.reply()
             # load the file
-            data = json.loads(data)
+            self.log_debug("parsing data from "+domain+" with "+str(len(data))+" lines")
             # for each line
-            for line in data.split('\n'):
+            for line in data.split("\n"):
                 message.clear()
                 #EventID|Time|Latitude|Longitude|Depth/Km|Author|Catalog|Contributor|ContributorID|MagType|Magnitude|MagAuthor|EventLocationName
                 #    0    1      2          3       4       5     6           7            8           9     10         11           12
@@ -81,7 +85,7 @@ class Earthquake(Service):
                 position["latitude"] = float(entry[2])
                 position["longitude"] = float(entry[3])
                 position["label"] = str(entry[10])
-                date_string = sdk.utils.datetimeutils.timestamp2date(int(message.get("timestamp")))
+                date_string = self.date.timestamp2date(int(message.get("timestamp")))
                 position["text"] = str(entry[12])
                 # prepare the measure
                 message.set("statistics", "day/avg")
