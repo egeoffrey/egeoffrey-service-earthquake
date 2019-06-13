@@ -89,7 +89,7 @@ class Earthquake(Service):
                 position["text"] = str(entry[12])
                 # prepare the measure
                 message.set("statistics", "day/avg")
-                message.set("value", position)
+                message.set("value", json.dumps(position))
                 # send the response back
                 self.send(message)
 
