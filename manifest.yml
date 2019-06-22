@@ -2,7 +2,7 @@ package: myhouse-service-earthquake
 revision: 7
 version: development
 github: myhouse-project/myhouse-service-earthquake
-dockerhub: myhouse-project/myhouse-service-earthquake
+dockerhub: myhouseproject/myhouse-service-earthquake
 description: Retrieve earthquake information
 tags: service earthquake
 modules:
