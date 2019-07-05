@@ -3,4 +3,4 @@
     - examples/earthquake/earthquake
     size: 6
     title: Earthquake
-    type: map
+    widget: map
