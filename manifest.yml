@@ -1,9 +1,23 @@
+manifest_schema: 1
 package: myhouse-service-earthquake
-revision: 8
+revision: 9
 version: development
 github: myhouse-project/myhouse-service-earthquake
 dockerhub: myhouseproject/myhouse-service-earthquake
 description: Retrieve earthquake information
 tags: service earthquake
 modules:
-  - service/earthquake
+  - service/earthquake:
+      description: Retrieve earthquake information
+      service_configuration: 
+        active:
+          - name: domain
+            description: The domain hosting the FDSN Web Services
+            format: string
+            placeholder: earthquake.usgs.gov
+            required: true
+          - name: query
+            description: A query in the format key1=value1&key=value2
+            placeholder: minmag=7
+            format: string
+            required: true
