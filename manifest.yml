@@ -1,6 +1,6 @@
 manifest_schema: 1
 package: myhouse-service-earthquake
-revision: 9
+revision: 10
 version: development
 github: myhouse-project/myhouse-service-earthquake
 dockerhub: myhouseproject/myhouse-service-earthquake

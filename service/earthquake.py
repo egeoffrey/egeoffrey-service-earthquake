@@ -61,7 +61,7 @@ class Earthquake(Service):
                     url = "http://"+domain+"/fdsnws/event/1/query?"+"format=text&limit="+str(self.limit)+"&orderby=time-asc"+"&"+str(query)
                     data = sdk.python.utils.web.get(url)
                 except Exception,e: 
-                    self.log_error("unable to connect to "+url+": "+exception.get(e))
+                    self.log_warning("unable to connect to "+url+": "+exception.get(e))
                     return
                 self.cache.add(cache_key, data)
             message.reply()
