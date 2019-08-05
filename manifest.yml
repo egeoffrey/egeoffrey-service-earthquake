@@ -2,6 +2,7 @@ branch: development
 description: Retrieve earthquake information
 dockerhub: myhouseproject/myhouse-service-earthquake
 github: myhouse-project/myhouse-service-earthquake
+icon: globe-africa
 manifest_schema: 2
 modules:
 - service/earthquake:
@@ -19,6 +20,6 @@ modules:
         placeholder: minmag=7
         required: true
 package: myhouse-service-earthquake
-revision: 12
+revision: 13
 tags: service earthquake
 version: 1.0
