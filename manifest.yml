@@ -1,7 +1,7 @@
 branch: development
 description: Retrieve earthquake information
-dockerhub: myhouseproject/myhouse-service-earthquake
-github: myhouse-project/myhouse-service-earthquake
+dockerhub: egeoffrey/egeoffrey-service-earthquake
+github: egeoffrey/egeoffrey-service-earthquake
 icon: globe-africa
 manifest_schema: 2
 modules:
@@ -19,7 +19,7 @@ modules:
         name: query
         placeholder: minmag=7
         required: true
-package: myhouse-service-earthquake
-revision: 13
+package: egeoffrey-service-earthquake
+revision: 14
 tags: service earthquake
 version: 1.0
