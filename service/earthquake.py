@@ -30,10 +30,6 @@ class Earthquake(Service):
         # constants
         self.limit = 10000
         self.query = "format=text&limit="+str(self.limit)+"&orderby=time-asc"
-        # helpers
-        self.date = None
-        # require configuration before starting up
-        self.add_configuration_listener("house", 1, True)
         
     # What to do when running
     def on_start(self):
@@ -79,7 +75,7 @@ class Earthquake(Service):
                 # set the timestamp to the event's date
                 date_format = "%Y-%m-%dT%H:%M:%S.%f"
                 date = datetime.datetime.strptime(entry[1], date_format)
-                message.set("timestamp", self.date.timezone(self.date.timezone(int(time.mktime(date.timetuple())))))
+                message.set("timestamp", int(time.mktime(date.timetuple())))
                 # prepare the position value
                 position = {}
                 position["latitude"] = float(entry[2])
@@ -94,7 +90,5 @@ class Earthquake(Service):
 
     # What to do when receiving a new/updated configuration for this module    
     def on_configuration(self,message):
-        # we need house timezone
-        if message.args == "house" and not message.is_null:
-            if not self.is_valid_configuration(["timezone"], message.get_data()): return False
-            self.date = DateTimeUtils(message.get("timezone"))
+        pass
+
