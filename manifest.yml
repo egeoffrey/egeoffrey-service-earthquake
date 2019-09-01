@@ -8,7 +8,7 @@ modules:
 - service/earthquake:
     description: Retrieve earthquake information
     service_configuration:
-      active:
+      pull:
       - description: The domain hosting the FDSN Web Services
         format: string
         name: domain
@@ -20,6 +20,6 @@ modules:
         placeholder: minmag=7
         required: true
 package: egeoffrey-service-earthquake
-revision: 16
+revision: 17
 tags: service earthquake
 version: 1.0

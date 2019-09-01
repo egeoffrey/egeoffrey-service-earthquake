@@ -7,7 +7,7 @@ service:
   configuration:
     domain: earthquake.usgs.gov
     query: minmag=7
-  mode: active
+  mode: pull
   name: earthquake
   schedule:
     minutes: 10
