@@ -60,4 +60,4 @@ service earthquake
 
 ## Version
 
-The version of this egeoffrey-service-earthquake is 1.0-23 on the master branch.
+The version of this egeoffrey-service-earthquake is 1.0-24 on the master branch.
