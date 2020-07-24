@@ -41,7 +41,7 @@ If you are a user willing to contribute to somebody's else package, submit your 
 
 Building is required only if you are the author of the package. To build a Docker image and automatically push it to [Docker Hub](https://hub.docker.com/r/egeoffrey/egeoffrey-service-earthquake), run the following command from within this package's directory:
 ```
-egeoffrey-cli build egeoffrey-service-earthquake <amd64|arm>
+egeoffrey-cli build egeoffrey-service-earthquake
 ```
 
 ## Uninstall
@@ -60,4 +60,4 @@ service earthquake
 
 ## Version
 
-The version of this egeoffrey-service-earthquake is 1.0-24 on the master branch.
+The version of this egeoffrey-service-earthquake is 1.0-25 on the master branch.
